@@ -1,0 +1,24 @@
+/* styling for the entire html sheet */
+html {
+    background-color: whitesmoke;
+
+}
+
+/* header style */
+header {
+    display: grid;
+    margin-left: 5px;
+    margin-right: 50px;
+    grid-template-rows: 50px;
+    justify-content: left;
+    align-items: center;
+}
+
+/* suicide prevention paragraph */
+#suicideprevention {
+    display: grid;
+    grid-template-rows: 20px;
+    
+}
+
+/* top nav bar */
