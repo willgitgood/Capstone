@@ -1,6 +1,6 @@
 import html from "html-literal"
 
-export default () => `
+export default () => html`
 <section id="contactus">
         <p>
           [insert contact information here]

@@ -1,8 +1,4 @@
-export { default as AboutUs } from "./AboutUs";
-export { default as ContactUs } from "./ContactUs";
-export { default as dogoftheday } from "./dogoftheday";
-export { default as factoftheday } from "./factoftheday";
-export { default as findatherapist } from "./findatherapist";
-export { default as findhelponline } from "./findhelponline";
-export { default as quoteoftheday } from "./quoteoftheday";
-export { default as suicideprevention } from "./suicideprevention";
+export { default as Header } from "./Header";
+export { default as Nav } from "./Nav";
+export { default as Main } from "./Main";
+export { default as Footer } from "./Footer";

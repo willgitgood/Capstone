@@ -1,6 +1,6 @@
 import html from "html-literal"
 
-export default () => `
+export default () => html`
 <section id="dogoftheday">
 <h2 id="dogpicheader">
    <em>Good Boy of the Week</em>

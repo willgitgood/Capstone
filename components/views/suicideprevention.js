@@ -1,6 +1,6 @@
 import html from "html-literal"
 
-export default () => `
+export default () => html`
 <section id="suicideprevention">
 <p>
 If you are having thoughts about harming yourself or others
