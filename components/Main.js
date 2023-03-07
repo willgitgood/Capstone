@@ -1,5 +1,9 @@
+import html from "html-literal";
 import * as views from "./views";
 
-export default st =>`
-${views[state.view](state)}
-`;
+export default state => {
+  console.log("state", state);
+  return html`
+    ${views[state.view](state)}
+  `;
+};

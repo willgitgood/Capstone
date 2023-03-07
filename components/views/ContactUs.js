@@ -1,8 +1,9 @@
-import html from "html-literal"
+import html from "html-literal";
 
-export default () => html`
-<section id="contactus">
-        <p>
-          [insert contact information here]
-        </p>
-      </section>`
+export default state => html`
+  <section id="contactus">
+    <p>
+      [insert contact information here]
+    </p>
+  </section>
+`;

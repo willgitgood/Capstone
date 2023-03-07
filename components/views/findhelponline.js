@@ -1,6 +1,0 @@
-import html from "html-literal"
-
-export default () => html`
-<section id="findhelponline">
-    There are other ways to get help. Webistes like BetterHelp and Talkspace offere online resources to connect their users with ways to find the help you need. You are never alone in this situation. You can visit the website: <a href="https://www.betterhelp.com/">BetterHelp</a> and they will match you with a licensed practicing therapist online.
-  </section>`
