@@ -1,24 +1,25 @@
 /* styling for the entire html sheet */
 html {
     background-color: whitesmoke;
-
+    display: flex;
 }
 
 /* header style */
 header {
-    display: grid;
+    display: flex;
     margin-left: 5px;
-    margin-right: 50px;
-    grid-template-rows: 50px;
-    justify-content: left;
+    margin-right: 5px;
     align-items: center;
+    border: solid 1px black;
 }
 
 /* suicide prevention paragraph */
 #suicideprevention {
-    display: grid;
-    grid-template-rows: 20px;
-    
+
+
 }
 
 /* top nav bar */
+#navLinks {
+
+}
