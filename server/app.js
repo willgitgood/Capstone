@@ -7,7 +7,7 @@ dotenv.config();
 const PORT = process.env.PORT || 4040; // we use || to provide a default value
 
 // connect mongoose to MONGODB
-mongoose.connect(process.env.MONGODB)
+mongoose.connect(process.env.MONGODB);
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection Error:"));
 db.once(
