@@ -3,5 +3,5 @@ export default [
   { title: "Contactus", text: "Contact Us" },
   { title: "Home", text: "Home" },
   { title: "Resources", text: "Resources" },
-  { title: "Comment", text: "Comment" }
+  { title: "Comment", text: "Leave a Positive Affirmation!" }
 ];
