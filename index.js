@@ -38,26 +38,13 @@ router.hooks({
       case "Home":
         axios
           .get(
-            // Replace the key provided here with your own key from openweathermap
-            `https://api.openweathermap.org/data/2.5/weather?q=st%20louis&appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`
+            // API with pictures of dogs
+            `https://dog.ceo/api/breeds/image/random`
           )
           .then(response => {
-            console.log(response.data);
-            const kelvinToFahrenheit = kelvinTemp =>
-              Math.round((kelvinTemp - 273.15) * (9 / 5) + 32);
-
-            // Save Data into state
-            store.Home.weather = {};
-            store.Home.weather.city = response.data.name;
-            store.Home.weather.temp = kelvinToFahrenheit(
-              response.data.main.temp
-            );
-            store.Home.weather.feelsLike = kelvinToFahrenheit(
-              response.data.main.feels_like
-            );
-            store.Home.weather.description =
-              response.data.weather[0].description;
-            console.log(store.Home.weather);
+            console.log(response.data.message);
+            store.Home.message = {};
+            // let image = response.data.message;
 
             done();
           });

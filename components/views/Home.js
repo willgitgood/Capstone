@@ -35,13 +35,10 @@ export default state => html`
   </section>
   <section id="dogoftheday">
     <h2 id="dogpicheader">
-      <em>Good Boy of the Week</em>
+      <strong>Pictures of Dogs</strong>
     </h2>
     <p>
-      <img src="./images/otto1.jpg" alt="Otto" />
-    </p>
-    <p>
-      This is Otto and he is our Good Boy of the Week.
+      <img src="${state.message}" alt="Enjoy this picture of a dog" />
     </p>
   </section>
 `;
