@@ -1,16 +1,14 @@
 /* styling for the entire html sheet */
 html {
     background-color: whitesmoke;
-    display: flex;
+
 }
 
 /* header style */
-header {
+.header {
     display: flex;
-    margin-left: 5px;
-    margin-right: 5px;
-    align-items: center;
-    border: solid 1px black;
+
+
 }
 
 /* suicide prevention paragraph */
@@ -20,6 +18,33 @@ header {
 }
 
 /* top nav bar */
-#navLinks {
+nav {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 
-}
+  nav > i {
+    padding: 1rem;
+    font-size: 2em;
+
+  }
+
+  nav > ul {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 10px 10px;
+  }
+
+  nav > ul > li {
+    padding: 0.5rem;
+    list-style-type: none;
+  }
+
+  /* footer */
+  footer {
+    border: solid 1px black;
+    padding: 2rem 2rem 4rem;
+    margin: 1rem 1rem;
+  }
