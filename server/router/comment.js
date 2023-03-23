@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const Comments= require("./models/Comments");
+const Comments = require("./models/Comments");
 const router = Router();
 
 // Create record in MongoDB Atlas using Mongoose.js ORM
@@ -42,7 +42,7 @@ router.put("/:id", (request, response) => {
       $set: {
         // Take note that the customer is not included, so it can't
         crust: body.crust,
-        cheese: body.cheese,
+        cheese: body.cheese
       }
     },
     {
