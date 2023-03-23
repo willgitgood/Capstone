@@ -43,7 +43,7 @@ router.hooks({
           )
           .then(response => {
             console.log(response.data.message);
-            store.Home.message = {};
+            store.Home.message = response.data.message;
             // let image = response.data.message;
 
             done();
