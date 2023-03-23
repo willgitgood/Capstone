@@ -1,4 +1,3 @@
-// 'Import' the Express module instead of http
 const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
@@ -42,7 +41,6 @@ app.use(cors);
 app.use(express.json());
 app.use(logging);
 
-// Handle the request with HTTP GET method from http://localhost:4040/status
 app.get("/status", (request, response) => {
   // Create the headers for response by default 200
   // Create the response body
