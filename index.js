@@ -27,6 +27,32 @@ function afterRender(state) {
   });
 }
 
+if (state.view === "Comment") {
+  document.querySelector("form").addEventListener("submit", event => {
+    event.preventDefault();
+
+    const inputList = event.target.elements;
+    console.log("Input Element List", inputList);
+
+    const requestData = {
+      name: inputList.name.value,
+      affirmation: inputList.affirmation.value
+    };
+    console.log("request Body", requestData);
+
+    axios
+      .post(`${process.env.MONGODB}/comment`, requestData)
+      .then(response => {
+        // Push the new pizza onto the Pizza state pizzas attribute, so it can be displayed in the pizza list
+        store.Comments.comment.push(response.data);
+        router.navigate("/Comments");
+      })
+      .catch(error => {
+        console.log("It puked", error);
+      });
+  });
+}
+
 router.hooks({
   before: (done, params) => {
     const view =

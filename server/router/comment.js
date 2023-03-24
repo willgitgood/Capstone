@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const Comments = require("./models/Comments");
+const Comments = require("../models/Comments");
 const router = Router();
 
 // Create record in MongoDB Atlas using Mongoose.js ORM
