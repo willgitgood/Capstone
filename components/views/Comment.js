@@ -3,23 +3,21 @@ import html from "html-literal";
 export default state => html`
   <section id="comment">
     <!-- form -->
-  <form method="POST" action="https://formspree.io/f/xnqybqbg">
+  <form method="POST" action="/">
     <!-- name -->
         <div id="submittedname">
         <label for="submittedname"
           >Name:</label>
-          <input name="submitted-name" autocomplete="name" type="text" id="submittedname" required/>
+          <input name="name" class="name" autocomplete="name" type="text" id="name" required/>
           </div>
           <!-- affirmation -->
         <div id="affirmation"></div>
         <label for="affirmation"
           >Affirmation:
-          <input type="text" name="affirmation"  id="affirmation" required />
+          <input type="text" name="affirmation"  id="affirmation"
+          class="affirmation1" required />
         </label>
         </div>
-        <!-- <button id="namebutton">
-          Save
-        </button> -->
         <div id="submitbutton">
         <input type="submit" value="Submit">
         </div>
