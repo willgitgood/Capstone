@@ -19,7 +19,7 @@ export default state => html`
         </label>
         </div>
         <div id="submitbutton">
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" name="submit">
         </div>
       </form>
   </section>
