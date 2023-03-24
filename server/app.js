@@ -45,7 +45,7 @@ app.get("/status", (request, response) => {
   // Create the headers for response by default 200
   // Create the response body
   // End and return the response
-  response.status(418).json({ message: "Service healthy" });
+  response.json({ message: "Service healthy" });
 });
 
 app.post("/add", (request, response) => {
