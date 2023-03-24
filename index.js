@@ -16,7 +16,7 @@ function render(state = store.Home) {
   ${Main(state)}
   ${Footer()}`;
 
-  afterRender();
+  afterRender(state);
   router.updatePageLinks();
 }
 
@@ -25,32 +25,30 @@ function afterRender(state) {
   document.querySelector(".fa-bars").addEventListener("click", () => {
     document.querySelector("nav > ul").classList.toggle("hidden--mobile");
   });
-}
+  if (state.view === "Comment") {
+    document.querySelector("form").addEventListener("submit", event => {
+      event.preventDefault();
 
-if (state.view === "Comment") {
-  document.querySelector("form").addEventListener("submit", event => {
-    event.preventDefault();
+      const inputList = event.target.elements;
+      console.log("Input Element List", inputList);
 
-    const inputList = event.target.elements;
-    console.log("Input Element List", inputList);
+      const requestData = {
+        name: inputList.name.value,
+        affirmation: inputList.affirmation.value
+      };
+      console.log("request Body", requestData);
 
-    const requestData = {
-      name: inputList.name.value,
-      affirmation: inputList.affirmation.value
-    };
-    console.log("request Body", requestData);
-
-    axios
-      .post(`${process.env.MONGODB}/comment`, requestData)
-      .then(response => {
-        // Push the new pizza onto the Pizza state pizzas attribute, so it can be displayed in the pizza list
-        store.Comments.comment.push(response.data);
-        router.navigate("/Comments");
-      })
-      .catch(error => {
-        console.log("It puked", error);
-      });
-  });
+      axios
+        .post(`${process.env.MONGODB}/comment`, requestData)
+        .then(response => {
+          store.Comments.comment.push(response.data);
+          router.navigate("/Comments");
+        })
+        .catch(error => {
+          console.log("It puked", error);
+        });
+    });
+  }
 }
 
 router.hooks({
