@@ -73,6 +73,18 @@ router.hooks({
             done();
           });
         break;
+      case "Comment":
+        axios
+          .get(`${process.env.MONGODB}/comment`)
+          .then(response => {
+            store.Comment.comment = response.data;
+            done();
+          })
+          .catch(error => {
+            console.log("It puked", error);
+            done();
+          });
+        break;
       default:
         done();
     }
