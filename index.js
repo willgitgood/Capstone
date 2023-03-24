@@ -39,10 +39,10 @@ function afterRender(state) {
       console.log("request Body", requestData);
 
       axios
-        .post(`${process.env.MONGODB}/comment`, requestData)
+        .post(`${process.env.COMMENT_API}/comment`, requestData)
         .then(response => {
-          store.Comments.comment.push(response.data);
-          router.navigate("/Comments");
+          store.Comment.comments.push(response.data);
+          router.navigate("/Comment");
         })
         .catch(error => {
           console.log("It puked", error);
@@ -75,9 +75,9 @@ router.hooks({
         break;
       case "Comment":
         axios
-          .get(`${process.env.MONGODB}/comment`)
+          .get(`${process.env.COMMENT_API}/comment`)
           .then(response => {
-            store.Comment.comment = response.data;
+            store.Comment.comments = response.data;
             done();
           })
           .catch(error => {
