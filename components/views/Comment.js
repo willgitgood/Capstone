@@ -29,10 +29,13 @@ export default state => html`
     <table id="comments">
       <tr>
         <th>Name:</th>
-      </tr>
-      <tr>
         <th>Affirmation:</th>
       </tr>
+      ${state.comments
+        .map(comments => {
+          return `<tr><td>${comments.name}</td><td>${comments.affirmation}</td></tr>`;
+        })
+        .join("")}
 
     </table>
 

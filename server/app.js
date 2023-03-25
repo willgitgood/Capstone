@@ -1,7 +1,8 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-const comment = require("./router/comment");
+const comments = require("./router/comments");
+// const Comment = require("./models/Comment");
 
 dotenv.config();
 
@@ -57,7 +58,7 @@ app.post("/add", (request, response) => {
   response.json(responseBody);
 });
 
-app.use("/comment", comment);
+app.use("/comments", comments);
 // Tell the Express app to start listening
 // Let the humans know I am running and listening on 4040
 // always be last

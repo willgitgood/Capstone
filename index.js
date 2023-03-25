@@ -39,10 +39,11 @@ function afterRender(state) {
       console.log("request Body", requestData);
 
       axios
-        .post(`${process.env.COMMENT_API}/comment`, requestData)
+        .post(`${process.env.COMMENT_API}/comments`, requestData)
         .then(response => {
           store.Comment.comments.push(response.data);
           router.navigate("/Comment");
+          console.log("response data", response.data);
         })
         .catch(error => {
           console.log("It puked", error);
@@ -75,7 +76,7 @@ router.hooks({
         break;
       case "Comment":
         axios
-          .get(`${process.env.COMMENT_API}/comment`)
+          .get(`${process.env.COMMENT_API}/comments`)
           .then(response => {
             store.Comment.comments = response.data;
             done();
