@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const Comments = require("../models/Comments");
+const Comment = require("../models/Comment");
 const router = Router();
 
 // Create record in MongoDB Atlas using Mongoose.js ORM
@@ -8,36 +8,37 @@ router.post("/", (request, response) => {
   newComment.save((error, record) => {
     if (error.name && error.name === "ValidationError")
       return response.status(400).json(error.errors);
-    if (error) return response.status(500).json(error.errors);
+    if (error) return response.status(500).json(error);
+    return response.json(record);
   });
 });
 
 // Get (read) all records from the collection
 router.get("/", (request, response) => {
-  Comments.find({}, (error, record) => {
-    if (error) return response.status(500).json(error.errors);
+  Comment.find({}, (error, record) => {
+    if (error) return response.status(500).json(error);
     return response.json(record);
   });
 });
 
 // Get a single record by ID using a query parameter
 router.get("/:id", (request, response) => {
-  Comments.findById(request.params.id, (error, record) => {
-    if (error) return response.status(500).json(error.errors);
+  Comment.findById(request.params.id, (error, record) => {
+    if (error) return response.status(500).json(error);
     return response.json(record);
   });
 });
 
 router.delete("/:id", (request, response) => {
-  Comments.findByIdAndRemove(request.params.id, {}, (error, record) => {
-    if (error) return response.status(500).json(error.errors);
+  Comment.findByIdAndRemove(request.params.id, {}, (error, record) => {
+    if (error) return response.status(500).json(error);
     return response.json(record);
   });
 });
 
 router.put("/:id", (request, response) => {
   const body = request.body;
-  Comments.findByIdAndUpdate(
+  Comment.findByIdAndUpdate(
     request.params.id,
     {
       $set: {
@@ -53,7 +54,7 @@ router.put("/:id", (request, response) => {
     (error, record) => {
       if (error.name && error.name === "ValidationError")
         return response.status(400).json(error.errors);
-      if (error) return response.status(500).json(error.errors);
+      if (error) return response.status(500).json(error);
       response.json(record);
     }
   );
