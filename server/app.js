@@ -2,7 +2,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-const pizzas = require("./routers/pizzas");
+const comments = require("./routers/comments");
 
 dotenv.config();
 
@@ -47,35 +47,20 @@ app.get("/status", (request, response) => {
   // Create the headers for response by default 200
   // Create the response body
   // End and return the response
-  response.status(418).json({ message: "Service healthy" });
+  response.json({ message: "Service healthy" });
 });
 
-app.get("/weather/:city", (request, response) => {
-  // Express adds a "params" Object to requests that has an matches parameter created using the colon syntax
-  const city = request.params.city;
-  // Generate a random number to use as the temperature
-  // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random#getting_a_random_integer_between_two_values_inclusive
-  const min = 70;
-  const max = 90;
-  const temp = Math.floor(Math.random() * (max - min + 1) + min);
-  // handle GET request for weather with an route parameter of "city"
-  response.send(
-    JSON.stringify({
-      current: `The weather in ${city} is ${temp} degrees today.`
-    })
-  );
-});
+// app.post("/add", (request, response) => {
+//   const name = request.body.name;
+//   const affirmation = request.body.affirmation;
+//   const responseBody = {
+//     name,
+//     affirmation
+//   };
+//   response.json(responseBody);
+// });
 
-app.post("/add", (request, response) => {
-  const num1 = request.body.numberOne;
-  const num2 = request.body.numberTwo;
-  const responseBody = {
-    sum: num1 + num2
-  };
-  response.json(responseBody);
-});
-
-app.use("/pizzas", pizzas);
+app.use("/comments", comments);
 // Tell the Express app to start listening
 // Let the humans know I am running and listening on 4040
 // always be last

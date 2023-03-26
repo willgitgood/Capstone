@@ -1,11 +1,11 @@
 const { Router } = require("express");
-const Pizza = require("../models/Pizza");
+const Comment = require("../models/Comment");
 const router = Router();
 
 // Create record in MongoDB Atlas using Mongoose.js ORM
 router.post("/", (request, response) => {
-  const newPizza = new Pizza(request.body);
-  newPizza.save((error, record) => {
+  const newComment = new Comment(request.body);
+  newComment.save((error, record) => {
     if (error) return response.status(500).json(error);
     return response.json(record);
   });
@@ -13,7 +13,7 @@ router.post("/", (request, response) => {
 
 // Get (read) all records from the collection
 router.get("/", (request, response) => {
-  Pizza.find({}, (error, record) => {
+  Comment.find({}, (error, record) => {
     if (error) return response.status(500).json(error);
     return response.json(record);
   });
@@ -21,14 +21,14 @@ router.get("/", (request, response) => {
 
 // Get a single record by ID using a query parameter
 router.get("/:id", (request, response) => {
-  Pizza.findById(request.params.id, (error, record) => {
+  Comment.findById(request.params.id, (error, record) => {
     if (error) return response.status(500).json(error);
     return response.json(record);
   });
 });
 
 router.delete("/:id", (request, response) => {
-  Pizza.findByIdAndRemove(request.params.id, {}, (error, record) => {
+  Comment.findByIdAndRemove(request.params.id, {}, (error, record) => {
     if (error) return response.status(500).json(error);
     return response.json(record);
   });
@@ -36,15 +36,13 @@ router.delete("/:id", (request, response) => {
 
 router.put("/:id", (request, response) => {
   const body = request.body;
-  Pizza.findByIdAndUpdate(
+  Comment.findByIdAndUpdate(
     request.params.id,
     {
       $set: {
         // Take note that the customer is not included, so it can't
-        crust: body.crust,
-        cheese: body.cheese,
-        sauce: body.sauce,
-        toppings: body.toppings
+        name: body.name,
+        affirmation: body.affirmation
       }
     },
     {
