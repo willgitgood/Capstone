@@ -1,6 +1,10 @@
 export default [
+  { title: "Aboutus", text: "About Us" },
+  {
+    title: "Affirmation",
+    text: "Leave a Positive Affirmation"
+  },
   { title: "Home", text: "Home" },
-  { title: "Bio", text: "Bio" },
-  { title: "Order", text: "Submit a Pizza Order" },
-  { title: "Pizza", text: "See all the Pizzas" },
+  { title: "Resources", text: "Resources" },
+  { title: "Comment", text: "Your Comments!" }
 ];

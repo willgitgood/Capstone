@@ -26,37 +26,34 @@ function afterRender(state) {
     document.querySelector("nav > ul").classList.toggle("hidden--mobile");
   });
 
-  if (state.view === "Order") {
+  if (state.view === "Affirmation") {
     document.querySelector("form").addEventListener("submit", event => {
       event.preventDefault();
 
       const inputList = event.target.elements;
       console.log("Input Element List", inputList);
 
-      const toppings = [];
-      // Interate over the toppings input group elements
-      for (let input of inputList.toppings) {
-        // If the value of the checked attribute is true then add the value to the toppings array
-        if (input.checked) {
-          toppings.push(input.value);
-        }
-      }
+      // const toppings = [];
+      // // Interate over the toppings input group elements
+      // for (let input of inputList.toppings) {
+      //   // If the value of the checked attribute is true then add the value to the toppings array
+      //   if (input.checked) {
+      //     toppings.push(input.value);
+      //   }
+      // }
 
       const requestData = {
-        customer: inputList.customer.value,
-        crust: inputList.crust.value,
-        cheese: inputList.cheese.value,
-        sauce: inputList.sauce.value,
-        toppings
+        name: inputList.name.value,
+        affirmation: inputList.affirmation.value
       };
       console.log("request Body", requestData);
 
       axios
-        .post(`${process.env.PIZZA_PLACE_API_URL}/pizzas`, requestData)
+        .post(`${process.env.COMMENTS}/comments`, requestData)
         .then(response => {
           // Push the new pizza onto the Pizza state pizzas attribute, so it can be displayed in the pizza list
-          store.Pizza.pizzas.push(response.data);
-          router.navigate("/Pizza");
+          store.Comment.comments.push(response.data);
+          router.navigate("/Comment");
         })
         .catch(error => {
           console.log("It puked1", error);
@@ -66,7 +63,7 @@ function afterRender(state) {
 }
 
 router.hooks({
-  before: (done, params) => {
+  before: async (done, params) => {
     const view =
       params && params.data && params.data.view
         ? capitalize(params.data.view)
@@ -77,21 +74,12 @@ router.hooks({
       case "Home":
         axios
           .get(
-            `https://api.openweathermap.org/data/2.5/weather?appid=${process.env.OPEN_WEATHER_MAP_API_KEY}&q=st%20louis`
+            // API with pictures of dogs
+            `https://dog.ceo/api/breeds/image/random`
           )
           .then(response => {
-            const kelvinToFahrenheit = kelvinTemp =>
-              Math.round((kelvinTemp - 273.15) * (9 / 5) + 32);
-
-            store.Home.weather = {};
-            store.Home.weather.city = response.data.name;
-            store.Home.weather.temp = kelvinToFahrenheit(
-              response.data.main.temp
-            );
-            store.Home.weather.feelsLike = kelvinToFahrenheit(
-              response.data.main.feels_like
-            );
-            store.Home.weather.description = response.data.weather[0].main;
+            console.log(response.data.message);
+            store.Home.message = response.data.message;
             done();
           })
           .catch(err => {
@@ -99,15 +87,15 @@ router.hooks({
             done();
           });
         break;
-      case "Pizza":
+      case "Comment":
         axios
-          .get(`${process.env.PIZZA_PLACE_API_URL}/pizzas`)
+          .get(`${process.env.COMMENTS}/comments`)
           .then(response => {
-            store.Pizza.pizzas = response.data;
+            store.Comment.comments = response.data;
             done();
           })
           .catch(error => {
-            console.log("It puked", error);
+            console.log("It puked2", error);
             done();
           });
         break;
