@@ -59,7 +59,7 @@ function afterRender(state) {
           router.navigate("/Pizza");
         })
         .catch(error => {
-          console.log("It puked", error);
+          console.log("It puked1", error);
         });
     });
   }
