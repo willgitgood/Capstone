@@ -1,1 +1,2 @@
-This is our practice SPA
+This is my capstone project
+
